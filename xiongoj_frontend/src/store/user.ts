@@ -16,7 +16,10 @@ export default {
       if (res.code === 0) {
         commit("updateUser", res.data);
       } else {
-        commit("updateUser", { ...state.loginUser, userRole: ACCESS_EUM.NOT_LOGIN });
+        commit("updateUser", {
+          ...state.loginUser,
+          userRole: ACCESS_EUM.NOT_LOGIN,
+        });
       }
     },
   },

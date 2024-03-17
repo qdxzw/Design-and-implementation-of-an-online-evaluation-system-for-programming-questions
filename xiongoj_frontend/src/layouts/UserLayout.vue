@@ -1,11 +1,11 @@
 <template>
   <div id="userlayout">
     <a-layout style="min-height: 100vh">
-      <a-layout-header class="header"> 
-      <a-space>
-        <img src="../assets/logo.png" class="logo" alt="">
-        <div>熊 OJ</div>
-      </a-space>  
+      <a-layout-header class="header">
+        <a-space>
+          <img src="../assets/logo.png" class="logo" alt="" />
+          <div>熊 OJ</div>
+        </a-space>
       </a-layout-header>
       <a-layout-content class="content">
         <router-view />
@@ -21,7 +21,7 @@
 #userlayout {
   text-align: center;
 }
-.logo{
+.logo {
   width: 64px;
   height: 64px;
 }

@@ -1,6 +1,6 @@
 <template>
   <div id="basicalayout">
-    <a-layout style="min-height: 100vh;">
+    <a-layout style="min-height: 100vh">
       <a-layout-header class="header">
         <GlobalHeader />
       </a-layout-header>
@@ -38,8 +38,8 @@
 </style>
 
 <script>
-import GlobalHeader from "@/components/GlobalHeader";
+import GlobalHeader from '@/components/GlobalHeader'
 export default {
-  components: { GlobalHeader },
-};
+  components: { GlobalHeader }
+}
 </script>
