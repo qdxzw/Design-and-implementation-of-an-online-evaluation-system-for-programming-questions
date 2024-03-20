@@ -53,9 +53,9 @@ onMounted(() => {
 /**
  * 监听searchParams变量，改变时触发页面的重新加载
  */
-watchEffect(()=>{
+watchEffect(() => {
   loadData();
-})
+});
 //{id: "1", title: "A + D", content: "新的内容", tags: ["二叉树"], submitNum: 0, acceptedNum: 0,…}
 const columns = [
   {
@@ -128,12 +128,12 @@ const doUpdate = (question: Question) => {
     },
   });
 };
-const onPageChange=(page:number)=>{
-  searchParams.value={
+const onPageChange = (page: number) => {
+  searchParams.value = {
     ...searchParams.value,
-    current:page
-  }
-}
+    current: page,
+  };
+};
 </script>
 <style scoped>
 #manageQuestionView {

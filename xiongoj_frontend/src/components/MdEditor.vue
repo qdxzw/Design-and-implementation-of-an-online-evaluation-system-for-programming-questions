@@ -29,7 +29,7 @@ const plugins = [gfm(), highlight()];
 const props = withDefaults(defineProps<Props>(), {
   value: () => "",
   mode: () => "split",
-  handleChange: (v: string) => { 
+  handleChange: (v: string) => {
     console.log(v);
   },
 });

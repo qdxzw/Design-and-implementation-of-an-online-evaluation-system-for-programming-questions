@@ -1,5 +1,9 @@
 <template>
-  <div id="code-editor" ref="codeEditorRef" style="min-height: 300px;height: 50vh" />
+  <div
+    id="code-editor"
+    ref="codeEditorRef"
+    style="min-height: 300px; height: 50vh"
+  />
   <!-- <a-button @click="fillValue">填充值</a-button> -->
 </template>
 
@@ -12,7 +16,7 @@ import { onMounted, ref, toRaw, watch } from "vue";
  */
 interface Props {
   value: string;
-  language?:string;
+  language?: string;
   handleChange: (v: string) => void;
 }
 
@@ -21,7 +25,7 @@ interface Props {
  */
 const props = withDefaults(defineProps<Props>(), {
   value: () => "",
-  language:()=>"java",
+  language: () => "java",
   handleChange: (v: string) => {
     console.log(v);
   },
@@ -50,14 +54,17 @@ const codeEditor = ref();
 //     theme: "vs-dark",
 //   });
 // })
-watch(()=>props.language,()=>{
-  if(codeEditor.value){
-    monaco.editor.setModelLanguage(
-      toRaw(codeEditor.value).getModel(),
-      props.language
-    );
+watch(
+  () => props.language,
+  () => {
+    if (codeEditor.value) {
+      monaco.editor.setModelLanguage(
+        toRaw(codeEditor.value).getModel(),
+        props.language
+      );
+    }
   }
-})
+);
 onMounted(() => {
   if (!codeEditorRef.value) {
     return;

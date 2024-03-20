@@ -32,32 +32,32 @@
 </template>
 
 <script setup lang="ts">
-import { UserControllerService, UserLoginRequest } from '../../../generated'
-import { reactive } from 'vue'
-import Message from '@arco-design/web-vue/es/message'
-import { useRouter } from 'vue-router'
-import { useStore } from 'vuex'
+import { UserControllerService, UserLoginRequest } from "../../../generated";
+import { reactive } from "vue";
+import Message from "@arco-design/web-vue/es/message";
+import { useRouter } from "vue-router";
+import { useStore } from "vuex";
 // 表单信息
 const form = reactive({
-  userAccount: '',
-  userPassword: ''
-} as UserLoginRequest)
+  userAccount: "",
+  userPassword: "",
+} as UserLoginRequest);
 
-const router = useRouter()
-const store = useStore()
+const router = useRouter();
+const store = useStore();
 
 // 提交表单
 const handleSubmit = async () => {
-  const res = await UserControllerService.userLoginUsingPost(form)
+  const res = await UserControllerService.userLoginUsingPost(form);
   //登录成功，跳转到主页面
   if (res.code === 0) {
-    await store.dispatch('user/getLoginUser')
+    await store.dispatch("user/getLoginUser");
     router.push({
-      path: '/',
-      replace: true
-    })
+      path: "/",
+      replace: true,
+    });
   } else {
-    Message.error('登录失败' + res.Message)
+    Message.error("登录失败" + res.Message);
   }
-}
+};
 </script>

@@ -132,37 +132,38 @@ const loadDate = async () => {
     id as any
   );
   if (res.code === 0) {
-    form.value=res.data as any;
-    if(!form.value.judgeCase){
-      form.value.judgeCase=[{
-        input:"",
-        output:"",
-      },
-    ];
-    }else{
-      form.value.judgeCase=JSON.parse(form.value.judgeCase as any)
+    form.value = res.data as any;
+    if (!form.value.judgeCase) {
+      form.value.judgeCase = [
+        {
+          input: "",
+          output: "",
+        },
+      ];
+    } else {
+      form.value.judgeCase = JSON.parse(form.value.judgeCase as any);
     }
-    if(!form.value.judgeConfig){
-      form.value.judgeConfig={
-        memoryLimit:1000,
-        stackLimit:1000,
-        timeLimit:1000,
-      }
-    }else{
-      form.value.judgeConfig=JSON.parse(form.value.judgeConfig as any)
+    if (!form.value.judgeConfig) {
+      form.value.judgeConfig = {
+        memoryLimit: 1000,
+        stackLimit: 1000,
+        timeLimit: 1000,
+      };
+    } else {
+      form.value.judgeConfig = JSON.parse(form.value.judgeConfig as any);
     }
-    if(!form.value.tags){
-      form.value.tags=[];
-    }else{
-      form.value.tags=JSON.parse(form.value.tags as any)
+    if (!form.value.tags) {
+      form.value.tags = [];
+    } else {
+      form.value.tags = JSON.parse(form.value.tags as any);
     }
   } else {
-    message.error("加载失败"+res.message)
+    message.error("加载失败" + res.message);
   }
 };
-onMounted(()=>{
-  loadDate()
-})
+onMounted(() => {
+  loadDate();
+});
 const doSubmit = async () => {
   console.log(form.value);
   // 区分更新还是创建
@@ -175,14 +176,14 @@ const doSubmit = async () => {
     } else {
       message.error("更新失败" + res.message);
     }
-  }else{
+  } else {
     const res = await QuestionControllerService.addQuestionUsingPost(
       form.value
     );
-    if(res.code===0){
+    if (res.code === 0) {
       message.success("创建成功");
-    }else{
-      message.error("创建失败"+res.message)
+    } else {
+      message.error("创建失败" + res.message);
     }
   }
 };

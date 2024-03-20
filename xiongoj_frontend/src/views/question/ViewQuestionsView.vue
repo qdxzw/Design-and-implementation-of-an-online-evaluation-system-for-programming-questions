@@ -71,14 +71,14 @@ import {
   QuestionControllerService,
   QuestionVO,
   QuestionSubmitAddRequest,
-  QuestionSubmitControllerService
+  QuestionSubmitControllerService,
 } from "../../../generated";
 import message from "@arco-design/web-vue/es/message";
 import CodeEditor from "@/components/CodeEditor.vue";
 import MdViewer from "@/components/MdViewer.vue";
 
 interface Props {
-  id: String;
+  id: string;
 }
 const props = withDefaults(defineProps<Props>(), {
   id: () => "",
@@ -102,14 +102,13 @@ const form = ref<QuestionSubmitAddRequest>({
  * 提交代码
  */
 const doSubmit = async () => {
-  if(!question.value?.id){
+  if (!question.value?.id) {
     return;
   }
   const res = await QuestionSubmitControllerService.doQuestionSubmitUsingPost({
     ...form.value,
-    questionId:question.value.id,
-  }
-  );
+    questionId: question.value.id,
+  });
   if (res.code === 0) {
     message.success("提交成功");
   } else {
